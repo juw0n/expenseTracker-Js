@@ -58,13 +58,19 @@ label {
     
 }
 
+#prices {
+    float: right;
+    margin: auto;
+    display: inline-block;
+}
+
 #deleteTrack {
     border-radius: 1.0em;
     border: none;
     cursor: pointer;
     margin: 5px;
     background-color: bisque;
-    float: right;
+    float: left;
 }
 
 #deleteTrack:hover {
@@ -84,5 +90,10 @@ label {
 }
 
 .trackItem {
-    margin: 0.7em;
+    margin: 0.4em;
+    width: 100%;
+    background-color: rgb(196, 255, 255);
+    padding: 5px;
 }
+
+

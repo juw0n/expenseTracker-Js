@@ -40,7 +40,11 @@ function addToList(a, b) {
   var li = document.createElement('li');
   li.className = 'trackItem';
   li.appendChild(document.createTextNode(a));
-  li.appendChild(document.createTextNode('$' + b));
+  var price = document.createElement('span');
+  price.setAttribute('id', 'prices');
+  price.appendChild(document.createTextNode('$ ' + b));
+  li.appendChild(price); // li.appendChild(document.createTextNode('$' +  b));
+
   var removeTrack = document.createElement('button');
   removeTrack.setAttribute('id', 'deleteTrack');
   removeTrack.textContent = 'X';
@@ -56,11 +60,10 @@ function totalIncome(x) {
 
   if (x > 0) {
     sum.push(Number(x));
-
-    for (i in sum) {
-      // income.value = total + sum[i];
-      income.value = total + sum[i];
-    }
+    console.log(sum); // for (i in sum) {
+    //     // income.value = total + sum[i];
+    //     income.value = total + sum[i];
+    // }
   }
 } // Delete an item from the list
 
@@ -78,4 +81,8 @@ function clearList() {
   UList.innerHTML = '';
 }
 
-deleteAll.addEventListener('click', clearList, false);
+deleteAll.addEventListener('click', clearList, false); // Making the total amount field non-editable
+
+income.readOnly = true;
+expense.readOnly = true;
+balance.readOnly = true;
