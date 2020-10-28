@@ -1,5 +1,7 @@
 "use strict";
 
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 var entryForm = document.getElementById("enteries");
 var expDes = document.getElementById('textField');
 var fdBack1 = document.getElementById('feedBack1');
@@ -25,12 +27,14 @@ function newTrack(e) {
     fdBack1.innerHTML = 'You have to enter a Description';
     fdBack2.innerHTML = 'You have to enter an amount';
   } else {
-    addToList(expDes.value, expAmt.value);
-    totalIncome(expAmt.value);
+    addToList(expDes.value, parseFloat(expAmt.value));
+    tIncomesExpenses(parseFloat(expAmt.value));
     expDes.value = '';
     expAmt.value = '';
     fdBack1.innerHTML = '';
     fdBack2.innerHTML = '';
+    expDes.focus();
+    balance.value = tBalance();
   }
 }
 
@@ -42,7 +46,7 @@ function addToList(a, b) {
   li.appendChild(document.createTextNode(a));
   var price = document.createElement('span');
   price.setAttribute('id', 'prices');
-  price.appendChild(document.createTextNode('$ ' + Number(b).toLocaleString()));
+  price.appendChild(document.createTextNode('$ ' + b.toLocaleString()));
   li.appendChild(price); // li.appendChild(document.createTextNode('$' +  b));
 
   var removeTrack = document.createElement('button');
@@ -54,16 +58,19 @@ function addToList(a, b) {
 } //function to calculate totalIncome
 
 
-function totalIncome(x) {
-  var sum = [];
-  var total = 0;
+function tIncomesExpenses(x) {
+  sum = addt + subt; // balance.value = sum; 
 
   if (x > 0) {
-    sum.push(Number(x));
-    console.log(sum); // for (i in sum) {
-    //     // income.value = total + sum[i];
-    //     income.value = total + sum[i];
-    // }
+    var addt = x;
+    income.value = addt;
+    console.log(addt);
+    console.log(_typeof(addt));
+  } else {
+    var subt = x;
+    expense.value = x;
+    console.log(subt);
+    console.log(_typeof(subt));
   }
 } // Delete an item from the list
 
@@ -86,3 +93,10 @@ deleteAll.addEventListener('click', clearList, false); // Making the total amoun
 income.readOnly = true;
 expense.readOnly = true;
 balance.readOnly = true;
+
+function tBalance() {
+  var elTincomes = parseFloat(income.value);
+  var elTexpenses = parseFloat(expense.value);
+  var elBalance = elTincomes + elTexpenses;
+  return elBalance;
+}
