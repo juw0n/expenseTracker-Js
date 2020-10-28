@@ -39,7 +39,7 @@ function addToList(a, b) {
     li.appendChild(document.createTextNode(a));
     var price = document.createElement('span')
     price.setAttribute('id', 'prices');
-    price.appendChild(document.createTextNode('$ ' + b));
+    price.appendChild(document.createTextNode('$ ' + Number(b).toLocaleString()));
     li.appendChild(price);
     // li.appendChild(document.createTextNode('$' +  b));
     var removeTrack = document.createElement('button');

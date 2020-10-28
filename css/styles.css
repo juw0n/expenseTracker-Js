@@ -19,6 +19,7 @@ label {
     border-radius: 10px;
     display: inline-block;
     margin: 8px;
+    outline: none;
 }
 
 .amountField {
@@ -29,6 +30,7 @@ label {
     border-radius: 10px;
     display: inline-block;
     margin: 5px;
+    outline: none;
 }
 
 .feedBack {
