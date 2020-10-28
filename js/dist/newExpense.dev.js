@@ -1,7 +1,5 @@
 "use strict";
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
 var entryForm = document.getElementById("enteries");
 var expDes = document.getElementById('textField');
 var fdBack1 = document.getElementById('feedBack1');
@@ -58,25 +56,27 @@ function addToList(a, b) {
 } //function to calculate totalIncome
 
 
-function tIncomesExpenses(x) {
-  sum = addt + subt; // balance.value = sum; 
+var sumIncome = [];
+var sumExpense = [];
 
-  if (x > 0) {
-    var addt = x;
+function tIncomesExpenses(x) {
+  if (x >= 0) {
+    sumIncome.push(x);
+    addt = sumIncome.reduce(function (a, b) {
+      return a + b;
+    }, 0);
     income.value = addt;
-    console.log(addt);
-    console.log(_typeof(addt));
   } else {
-    var subt = x;
-    expense.value = x;
-    console.log(subt);
-    console.log(_typeof(subt));
+    sumExpense.push(x);
+    subt = sumExpense.reduce(function (a, b) {
+      return a + b;
+    }, 0);
+    expense.value = subt;
   }
 } // Delete an item from the list
 
 
 function deleteItemList() {
-  //alert('remove this Item!');
   var li = this.parentNode;
   li.remove();
 } //function to clear all list item

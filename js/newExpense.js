@@ -53,25 +53,22 @@ function addToList(a, b) {
 }
 
 //function to calculate totalIncome
+let sumIncome = [];
+let sumExpense = [];
 function tIncomesExpenses(x) { 
-    sum = addt + subt;
-    // balance.value = sum; 
-    if (x > 0) {
-        var addt = x;
+    if (x >= 0) {
+        sumIncome.push(x);
+        addt = sumIncome.reduce((a, b) => a + b, 0);
         income.value = addt;
-        console.log(addt);
-        console.log(typeof addt);
     } else {
-        var subt = x;
-        expense.value = x;
-        console.log(subt);
-        console.log(typeof subt);
+        sumExpense.push(x);
+        subt = sumExpense.reduce((a, b) => a + b, 0);
+        expense.value = subt;
     }
 }
 
 // Delete an item from the list
 function deleteItemList() {
-    //alert('remove this Item!');
     var li = this.parentNode;
     li.remove();
 }

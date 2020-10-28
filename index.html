@@ -21,7 +21,9 @@
                     <label for="amount",id="amountLab">Amount<span id="dollarSign">($):</span></label>  
                     <input type="number", class="amountField", id="amount", placeholder="0.00"/>
                 </div>
+                <label for="amountToEnter" id="notice">Income is Positive (+ve) while expense is Negative (-ve)</label>
                 <div id="feedBack2" class="feedBack"></div>
+                
 
                 <button type="submit", id="addItem" class="delete">Add</button>
             </form>
@@ -45,7 +47,7 @@
             </p>
             <p id="exp">
                 <label for="totalExpense", id="ExpenseLab">Expenses<span id="dollarSign">($):</span></label>  
-                <input type="number", class="amountField", id="tExpenses", placeholder="0.00">
+                <input type="number", class="amountField", id="tExpenses", value="{{model.PortNumber}} || 0", value="0">
             </p>
         </div>
 

@@ -99,3 +99,10 @@ label {
     text-align: left;
     align-self: start;
 }
+
+#notice {
+    display: inline;
+    text-align: center;
+    margin: 60px;
+    padding: 5px;
+}
