@@ -31,6 +31,7 @@ function newTrack(e) {
         fdBack2.innerHTML = '';
         expDes.focus();
         balance.value = tBalance();
+        // console.log(sumIncome);
     }
 }
 addItem.addEventListener('click', newTrack, false);
@@ -42,6 +43,11 @@ function addToList(a, b) {
     var price = document.createElement('span')
     price.setAttribute('id', 'prices');
     price.appendChild(document.createTextNode('$ ' + b.toLocaleString()));
+    if (b > 0) {
+        li.setAttribute('class', 'incomePrice');
+    } else {
+        li.setAttribute('class', 'expensePrice');
+    }
     li.appendChild(price);
     // li.appendChild(document.createTextNode('$' +  b));
     var removeTrack = document.createElement('button');
@@ -67,16 +73,25 @@ function tIncomesExpenses(x) {
     }
 }
 
+
 // Delete an item from the list
 function deleteItemList() {
     var li = this.parentNode;
     li.remove();
+    // sumExpense;
+    // for (i=0; i<sumIncome; i++) {
+    //     sumIncome.pop(i);
+    // }
+    // console.log(sumIncome);
 }
 
 //function to clear all list item
 var deleteAll = document.getElementById('clearAll');
 function clearList() {
     UList.innerHTML = '';
+    income.value = parseFloat(0.00);
+    expense.value = parseFloat(0.00);
+    balance.value = parseFloat(0.00);
 }
 deleteAll.addEventListener('click', clearList, false)
 
