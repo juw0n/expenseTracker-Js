@@ -1,8 +1,13 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: Arial, tahoma, georgia, sans-serif;
     background-color: rgb(140, 170, 152);
     margin: 20px auto;
     max-width: 50%;
+    justify-content: center;
 }
 
 label {
@@ -35,6 +40,7 @@ label {
 
 .feedBack {
     color: #dc143c;
+    text-align: center;
 }
 
 .dollarSign {
@@ -79,7 +85,6 @@ label {
     background: rgb(181, 211, 169);
     color: black;
 }
-
 
 #clearAll {
     border-radius: 1.2em;

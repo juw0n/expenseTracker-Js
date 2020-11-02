@@ -16,14 +16,14 @@ function newTrack(e) {
   e.preventDefault();
 
   if (expDes.value === '' && expAmt.value !== '') {
-    fdBack1.innerHTML = 'You have to enter a Description';
+    fdBack1.innerHTML = 'Enter a Description';
     fdBack2.innerHTML = '';
   } else if (expDes.value !== '' && expAmt.value === '') {
     fdBack1.innerHTML = '';
-    fdBack2.innerHTML = 'You have to enter an amount';
+    fdBack2.innerHTML = 'Enter an amount';
   } else if (expDes.value === '' && expAmt.value === '') {
-    fdBack1.innerHTML = 'You have to enter a Description';
-    fdBack2.innerHTML = 'You have to enter an amount';
+    fdBack1.innerHTML = 'Enter a Description';
+    fdBack2.innerHTML = 'Enter an amount';
   } else {
     addToList(expDes.value, parseFloat(expAmt.value));
     tIncomesExpenses(parseFloat(expAmt.value));
@@ -72,13 +72,13 @@ function tIncomesExpenses(x) {
     addt = sumIncome.reduce(function (a, b) {
       return a + b;
     }, 0);
-    income.value = addt;
+    income.value = addt.toFixed(2);
   } else {
     sumExpense.push(x);
     subt = sumExpense.reduce(function (a, b) {
       return a + b;
     }, 0);
-    expense.value = subt;
+    expense.value = subt.toFixed(2);
   }
 } // Delete an item from the list
 
@@ -97,9 +97,9 @@ var deleteAll = document.getElementById('clearAll');
 
 function clearList() {
   UList.innerHTML = '';
-  income.value = parseFloat(0.00);
-  expense.value = parseFloat(0.00);
-  balance.value = parseFloat(0.00);
+  income.value = parseFloat(0).toFixed(2);
+  expense.value = parseFloat(0).toFixed(2);
+  balance.value = parseFloat(0).toFixed(2);
 }
 
 deleteAll.addEventListener('click', clearList, false); // Making the total amount field non-editable
@@ -112,5 +112,5 @@ function tBalance() {
   var elTincomes = parseFloat(income.value);
   var elTexpenses = parseFloat(expense.value);
   var elBalance = elTincomes + elTexpenses;
-  return elBalance;
+  return elBalance.toFixed(2);
 }
