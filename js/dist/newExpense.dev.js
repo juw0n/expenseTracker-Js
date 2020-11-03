@@ -1,5 +1,7 @@
 "use strict";
 
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 var entryForm = document.getElementById("enteries");
 var expDes = document.getElementById('textField');
 var fdBack1 = document.getElementById('feedBack1');
@@ -10,7 +12,7 @@ var UList = document.getElementById('UList');
 var income = document.getElementById('tIncomes');
 var expense = document.getElementById('tExpenses');
 var balance = document.getElementById('tBalances');
-var deleteAll = document.getElementById('clearAll');
+var deleteAll = document.getElementById('clearAll'); // Function to check and take inputs from user
 
 function newTrack(e) {
   e.preventDefault();
@@ -32,19 +34,24 @@ function newTrack(e) {
     fdBack1.innerHTML = '';
     fdBack2.innerHTML = '';
     expDes.focus();
-    balance.value = tBalance(); // console.log(sumIncome);
+    balance.value = tBalance();
   }
 }
 
-addItem.addEventListener('click', newTrack, false);
+addItem.addEventListener('click', newTrack, false); // Funtion to add the user input to the list
 
 function addToList(a, b) {
   var li = document.createElement('li');
   li.className = 'trackItem';
-  li.appendChild(document.createTextNode(a));
+  var removeTrack = document.createElement('button');
+  removeTrack.setAttribute('id', 'deleteTrack');
+  removeTrack.textContent = 'X';
+  removeTrack.addEventListener('click', deleteItemList, false);
+  li.appendChild(document.createTextNode(a)); // li.textContent = parseFloat(a);
+
   var price = document.createElement('span');
   price.setAttribute('id', 'prices');
-  price.appendChild(document.createTextNode('$ ' + b.toLocaleString()));
+  price.appendChild(document.createTextNode(b));
 
   if (b > 0) {
     li.setAttribute('class', 'incomePrice');
@@ -52,13 +59,8 @@ function addToList(a, b) {
     li.setAttribute('class', 'expensePrice');
   }
 
-  li.appendChild(price); // li.appendChild(document.createTextNode('$' +  b));
-
-  var removeTrack = document.createElement('button');
-  removeTrack.setAttribute('id', 'deleteTrack');
-  removeTrack.textContent = 'X';
-  removeTrack.addEventListener('click', deleteItemList, false);
   li.appendChild(removeTrack);
+  li.appendChild(price);
   UList.appendChild(li);
 } //function to calculate totalIncome
 
@@ -71,23 +73,55 @@ function tIncomesExpenses(x) {
 
   if (X >= 0) {
     sumIncome.push(X);
-    addt = sumIncome.reduce(function (a, b) {
-      return a + b;
+    addt = sumIncome.reduce(function (p, q) {
+      return p + q;
     }, 0);
     income.value = addt.toFixed(2);
   } else {
     sumExpense.push(X);
-    subt = sumExpense.reduce(function (a, b) {
-      return a + b;
+    subt = sumExpense.reduce(function (p, q) {
+      return p + q;
     }, 0);
     expense.value = subt.toFixed(2);
   }
-} // Delete an item from the list
+} // Delete an item from the list and remove the price
 
 
 function deleteItemList() {
+  // function to remove item from list
   var li = this.parentNode;
   li.remove();
+  var expenseAmount = parseFloat(li.lastElementChild.innerText);
+  console.log(expenseAmount);
+  console.log(_typeof(expenseAmount));
+  console.log(sumIncome);
+  console.log(sumExpense);
+
+  if (expenseAmount > 0) {
+    if (sumIncome.includes(expenseAmount)) {
+      var indexAmountDelete = sumIncome.indexOf(expenseAmount);
+      console.log(indexAmountDelete);
+      sumIncome.splice(indexAmountDelete, 1); // console.log(sumIncome);
+
+      addt2 = sumIncome.reduce(function (p, q) {
+        return p + q;
+      }, 0);
+      income.value = addt2.toFixed(2);
+      balance.value = tBalance();
+    }
+  } else {
+    if (sumExpense.includes(expenseAmount)) {
+      var indexAmountDelete = sumExpense.indexOf(expenseAmount);
+      console.log(indexAmountDelete);
+      sumExpense.splice(indexAmountDelete, 1);
+      console.log(sumExpense);
+      subt2 = sumExpense.reduce(function (p, q) {
+        return p + q;
+      }, 0);
+      expense.value = subt2.toFixed(2);
+      balance.value = tBalance();
+    }
+  }
 } //function to clear all list item
 
 
@@ -109,6 +143,6 @@ balance.readOnly = true;
 function tBalance() {
   var elTincomes = parseFloat(income.value);
   var elTexpenses = parseFloat(expense.value);
-  var elBalance = elTincomes + elTexpenses;
+  var elBalance = eval(elTincomes + elTexpenses);
   return elBalance.toFixed(2);
 }
