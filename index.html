@@ -8,56 +8,58 @@
         <link rel="stylesheet" href="css/styles.css", type="text/css">
     </head>
     <body id="body">
-        <div><h2 id="heading">Track Your Expenses</h2>
+        <div class="container">
+            <div class="heading"><h2 id="heading">Track Your Expenses</h2>
+                <hr>
+            </div>
+            <div id="enteringField">
+                <form id=textEntry>
+                    <label for="expense", id="description">Expense Description: </label> 
+                    <input type="search", id="textField", placeholder="expense description..."/>
+                
+                    <div id="feedBack1" class="feedBack"></div>
+                    
+                    <div>
+                        <label for="amount",id="amountLab">Amount<span id="dollarSign">($):</span></label>  
+                        <input type="number", class="amountField", id="amount", placeholder="0.00"/>
+                    </div>
+                    <div id="feedBack2" class="feedBack"></div>
+                    <label for="amountToEnter" id="notice">Income is Positive (+ve) while expense is Negative (-ve)</label>
+                    <div class="addbutton">
+                        <button type="submit", id="addItem" class="delete">Add</button>
+                    </div>
+                </form>
+                    
+            </div>
             <hr>
+            <div>
+                <h4 id="trackHeader">Expense Tracks</h4>
+                <ul id="UList">
+                    <li class="trackItem"><button id="deleteTrack">X</button>IPhone  12<span id= 'prices'>$1,200</span></li>
+                </ul>
+            </div>
+            <div class="deleteAll">
+                <buttton class="delete" id="clearAll">Clear All</buttton>
+            </div>
+            <hr>
+            <div id="totalAmounts">
+                <p id="inc">
+                    <label for="totalIncome", id="IncomeLab">Income<span id="dollarSign">($):</span> </label> 
+                    <input type="number", class="amountField", id="tIncomes", placeholder="0.00", value= '0.00'>
+                </p>
+                <p id="exp">
+                    <label for="totalExpense", id="ExpenseLab">Expenses<span id="dollarSign">($):</span></label>  
+                    <input type="number", class="amountField", id="tExpenses", placeholder="0.00", value= '0.00'>
+                </p>
+            </div>
+    
+            <div>
+                <p>
+                    <label for="totalBalance", id="BalanceLab">Total Balance<span id="dollarSign">($):</span></label>  
+                    <input type="number", class="amountField", id="tBalances", placeholder="0.00">
+                </p>
+            </div>
+            <script src="js/newExpense.js"></script>
         </div>
-        <div id="enteringField">
-            <form id=textEntry>
-                <label for="expense", id="description">Expense Description: </label> 
-                <input type="search", id="textField", placeholder="expense description..."/>
-            
-                <div id="feedBack1" class="feedBack"></div>
-                
-                <div>
-                    <label for="amount",id="amountLab">Amount<span id="dollarSign">($):</span></label>  
-                    <input type="number", class="amountField", id="amount", placeholder="0.00"/>
-                </div>
-                <label for="amountToEnter" id="notice">Income is Positive (+ve) while expense is Negative (-ve)</label>
-                <div id="feedBack2" class="feedBack"></div>
-                
-
-                <button type="submit", id="addItem" class="delete">Add</button>
-            </form>
-                
-        </div>
-        <hr>
-        <div>
-            <h4 id="trackHeader">Tracks</h4>
-            <ul id="UList">
-                <li class="trackItem"><button id="deleteTrack">X</button>IPhone <span id= 'prices'>$1,200</span></li>
-            </ul>
-        </div>
-        <div class="deleteAll">
-            <buttton class="delete" id="clearAll">Clear All</buttton>
-        </div>
-        <hr>
-        <div id="totalAmounts">
-            <p id="inc">
-                <label for="totalIncome", id="IncomeLab">Income<span id="dollarSign">($):</span> </label> 
-                <input type="number", class="amountField", id="tIncomes", placeholder="0.00", value= '0.00'>
-            </p>
-            <p id="exp">
-                <label for="totalExpense", id="ExpenseLab">Expenses<span id="dollarSign">($):</span></label>  
-                <input type="number", class="amountField", id="tExpenses", placeholder="0.00", value= '0.00'>
-            </p>
-        </div>
-
-        <div>
-            <p>
-                <label for="totalBalance", id="BalanceLab">Total Balance<span id="dollarSign">($):</span></label>  
-                <input type="number", class="amountField", id="tBalances", placeholder="0.00">
-            </p>
-        </div>
-        <script src="js/newExpense.js"></script>
     </body>
 </html>

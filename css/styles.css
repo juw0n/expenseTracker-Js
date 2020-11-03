@@ -2,22 +2,25 @@
     box-sizing: border-box;
 }
 
-body {
-    font-family: Arial, tahoma, georgia, sans-serif;
+body{
     background-color: rgb(140, 170, 152);
-    margin: 20px auto;
-    max-width: 50%;
+}
+
+.container {
+    font-family: Arial, tahoma, georgia, sans-serif;
+    margin: auto;
+    max-width: 600px;
     justify-content: center;
 }
 
 label {
-    width: 180px;
+    width: 185px;
     display: inline-block;
     text-align: right;
 }
 
 #textField {
-    width: 50%;
+    width: 250px;
     font-size: 17px;
     padding: 5px;
     border: none;
@@ -28,7 +31,7 @@ label {
 }
 
 .amountField {
-    width: 40%;
+    width: 200px;
     font-size: 17px;
     padding: 5px;
     border: none;
@@ -41,6 +44,7 @@ label {
 .feedBack {
     color: #dc143c;
     text-align: center;
+    /* margin-left: 10px; */
 }
 
 .dollarSign {
@@ -54,6 +58,8 @@ label {
     font-size: 15px;
     cursor: pointer;
     border: 5px;
+    outline: none;
+    background-color: rgb(147, 235, 235);
 }
 
 .delete:hover {
@@ -62,8 +68,7 @@ label {
 
 #UList{
     list-style: none;
-    max-width: 90%;
-    
+    max-width: 90%;  
 }
 
 #prices {
@@ -73,12 +78,13 @@ label {
 }
 
 #deleteTrack {
-    border-radius: 1.0em;
+    border-radius: 1.5em;
     border: none;
     cursor: pointer;
-    margin: 5px;
-    background-color: bisque;
+    margin-right: 10px;
+    background-color: rgb(218, 87, 87);
     float: left;
+    outline: none;
 }
 
 #deleteTrack:hover {
@@ -86,7 +92,7 @@ label {
     color: black;
 }
 
-#clearAll {
+/* #clearAll {
     border-radius: 1.2em;
     padding: 7px;
     border: 5px;
@@ -94,21 +100,22 @@ label {
     cursor: pointer;
     display: inline-block;
     text-align: center;
-}
+} */
 
 .trackItem {
     margin: 0.4em;
-    width: 100%;
+    width: 500px;
     background-color: rgb(196, 255, 255);
     padding: 5px;
     text-align: left;
     align-self: start;
+    font-size: px;
 }
 
 #notice {
     display: inline;
     text-align: center;
-    margin: 60px;
+    margin:40px;
     padding: 5px;
 }
 
@@ -130,4 +137,9 @@ label {
     text-align: left;
     align-self: start;
     /* border-color: #bb5267; */
+}
+
+.addbutton, .deleteAll {
+    text-align: center;
+    margin: 20px;
 }

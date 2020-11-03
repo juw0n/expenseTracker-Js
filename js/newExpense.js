@@ -62,12 +62,13 @@ function addToList(a, b) {
 let sumIncome = [];
 let sumExpense = [];
 function tIncomesExpenses(x) { 
-    if (x >= 0) {
-        sumIncome.push(x);
+    X = parseFloat(x);
+    if (X >= 0) {
+        sumIncome.push(X);
         addt = sumIncome.reduce((a, b) => a + b, 0);
         income.value = addt.toFixed(2);
     } else {
-        sumExpense.push(x);
+        sumExpense.push(X);
         subt = sumExpense.reduce((a, b) => a + b, 0);
         expense.value = subt.toFixed(2);
     }
@@ -78,11 +79,6 @@ function tIncomesExpenses(x) {
 function deleteItemList() {
     var li = this.parentNode;
     li.remove();
-    // sumExpense;
-    // for (i=0; i<sumIncome; i++) {
-    //     sumIncome.pop(i);
-    // }
-    // console.log(sumIncome);
 }
 
 //function to clear all list item
