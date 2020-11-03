@@ -118,6 +118,12 @@ function clearList() {
     income.value = parseFloat(0).toFixed(2);
     expense.value = parseFloat(0).toFixed(2);
     balance.value = parseFloat(0).toFixed(2);
+    expDes.value = '';
+    expAmt.value = '';
+    fdBack1.innerHTML = '';
+    fdBack2.innerHTML = '';
+    sumIncome = [];
+    sumExpense = [];
 }
 deleteAll.addEventListener('click', clearList, false)
 
